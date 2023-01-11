@@ -30,8 +30,9 @@
 .jambo-content {
   display: flex;
   justify-content: space-between;
-  margin: auto;
   max-width: var(--max-width);
+  margin: auto;
+  padding: 0 10px;
 }
 
 .jambo-content > div {

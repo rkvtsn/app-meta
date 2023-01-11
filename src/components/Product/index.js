@@ -1,5 +1,7 @@
 import Icon from "../Icon";
 import Icons from "../Icon/Icons";
+import Image from "../Image";
+import "./styles.css"
 
 const Product = ({ name, id, img, price, description }) => {
   const handleOnOrder = () => {
@@ -8,7 +10,7 @@ const Product = ({ name, id, img, price, description }) => {
 
   return (
     <div className="product">
-      <img alt={name} src={img} />
+      <Image alt={name} src={img} />
       <div>
         <div>{name}</div>
         <div>${price}</div>
