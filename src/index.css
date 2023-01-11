@@ -1,13 +1,98 @@
+:root {
+  --main-color: #f4ce14;
+
+  --highlight-color: #333;
+
+  --secondary-light-color: #ee9972;
+  --secondary-dark-color: #fbdabb;
+
+  --primary-bg-color: #495e57;
+  --secondary-bg-color: #edefee;
+  --max-width: 1000px;
+  --border-radius: 16px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Markazi Text", serif;
+  line-height: 0.8;
+}
+
+h1 {
+  font-size: 64pt;
+}
+h2 {
+  font-size: 40pt;
+}
+
+p {
+  font-family: "Karla", sans-serif;
+  font-size: 16pt;
+  line-height: 1.5;
+  color: var(--primary-bg-color);
+}
+
+button {
+  border: none;
+  background: var(--main-color);
+  color: var(--highlight-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px 22px;
+}
+
+a {
+  border: none;
+  color: var(--highlight-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: var(--primary-bg-color);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Karla", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.card-title {
+  font-size: 18pt;
+  font-weight: bold;
+}
+.highlight-text {
+  font-weight: bold;
+}
+.borders-round {
+  border-radius: var(--border-radius);
 }

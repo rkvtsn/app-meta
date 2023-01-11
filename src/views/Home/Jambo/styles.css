@@ -1,0 +1,48 @@
+:root {
+  --offset-margin: 60px;
+}
+
+.jambo {
+  background-color: var(--primary-bg-color);
+  position: relative;
+  margin-bottom: var(--offset-margin);
+}
+
+.jambo h1 {
+  color: var(--main-color);
+}
+
+.jambo h2,
+.jambo p {
+  color: var(--secondary-bg-color);
+}
+
+.jambo img {
+  border-radius: var(--border-radius);
+  display: block;
+  position: relative;
+  height: 340px;
+  width: 340px;
+  object-fit: cover;
+  top: var(--offset-margin);
+}
+
+.jambo-content {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  max-width: var(--max-width);
+}
+
+.jambo-content > div {
+  flex: 1;
+}
+
+.jambo-content__info {
+  padding: 25px 0;
+  max-width: 370px;
+}
+
+.jambo-content__info h2 {
+  margin-bottom: 30px;
+}

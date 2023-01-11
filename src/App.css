@@ -1,0 +1,6 @@
+header,
+footer {
+  max-width: var(--max-width);
+  margin: auto;
+  width: 100%;
+}

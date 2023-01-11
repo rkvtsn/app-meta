@@ -1,0 +1,11 @@
+.specials {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.specials__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px auto;
+}
