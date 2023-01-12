@@ -1,4 +1,23 @@
 .booking {
-    margin: 0 auto;
-    height: 100%;
+  display: flex;
+  margin: 0 auto;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.booking-content {
+  position: relative;
+  width: 100%;
+  padding-top: 15px;
+}
+
+.booking .backdrop {
+  position: absolute;
+  z-index: -1;
+  object-fit: cover;
+  width: 100%;
+  top: 0;
+  height: 490px;
 }

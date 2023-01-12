@@ -1,6 +1,7 @@
-import "./styles.css"
+import formArray from "../../../utils/formArray";
+import "./styles.css";
 
-const timeOptions = [...Array(22 - 17).keys()].map((i) => i + 17);
+const timeOptions = formArray(17, 22, (i) => `${i}:00`);
 
 const BookingForm = ({ value, onChange, onSubmit }) => {
   const handleOnChange = (e) => {
@@ -10,8 +11,13 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onSubmit();
+  };
+
   return (
-    <form onSubmit={onSubmit} className="booking-form">
+    <form onSubmit={handleSubmit} className="booking-form">
       <label htmlFor="res-date">Choose date</label>
       <input
         name="date"
@@ -28,8 +34,11 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         onChange={handleOnChange}
         id="res-time "
       >
+        <option value="">-</option>
         {timeOptions.map((time) => (
-          <option value={time}>{time}:00</option>
+          <option key={time} value={time}>
+            {time}
+          </option>
         ))}
       </select>
 

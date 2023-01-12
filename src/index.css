@@ -58,6 +58,8 @@ p {
   color: var(--primary-bg-color);
 }
 
+input[type="submit"],
+input[type="button"],
 button {
   border: none;
   background: var(--main-color);
@@ -121,4 +123,16 @@ code {
   max-width: var(--max-width);
   margin: auto;
   padding: 0;
+}
+
+label,
+input,
+select {
+  font-size: 14pt;
+  width: 100%;
+  max-width: 500px;
+}
+
+label {
+  font-weight: bold;
 }
