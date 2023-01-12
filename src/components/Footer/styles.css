@@ -7,10 +7,11 @@ footer.footer {
   align-items: center;
   gap: 10px;
   justify-content: space-between;
+  margin-bottom: 0;
 }
 
-footer > * {
-  width: fit-content;
+footer img.logo {
+  margin: 0;
 }
 
 footer .copyright {
