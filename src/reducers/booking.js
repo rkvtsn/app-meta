@@ -1,32 +1,29 @@
 import { useReducer } from "react";
-import formArray from "../utils/formArray";
-import { formatDate } from "../utils/formatDate";
+import { BOOKING_SLOTS } from "./constants";
+import { initializeTimes } from "./utils/initializeTimes";
+import { updateTimes } from "./utils/updateTimes";
 
 export const ACTION_CHANGE = "change";
+export const ACTION_CHANGE_DATE = "change-date";
 
-/**
- * Why do we need the Reducer??
- */
 const reducer = (state, action) => {
-  if (action.type === ACTION_CHANGE) {
+  if (action.type === ACTION_CHANGE_DATE) {
+    const availableTimes = updateTimes(BOOKING_SLOTS, action.payload.date);
+    return {
+      ...state,
+      availableTimes: [...availableTimes],
+      time: !availableTimes.includes(state.time) ? "" : state.time,
+      ...action.payload,
+    };
+  } else if (action.type === ACTION_CHANGE) {
     return { ...state, ...action.payload };
   } else {
     return state;
   }
 };
 
-const initializeTimes = () => {
-  const availableTimes = formArray(17, 22, (i) => `${i}:00`);
-  const date = new Date();
-  return {
-    date: formatDate(date),
-    time: "",
-    guests: 1,
-    occasion: 0,
-    availableTimes,
-  };
-};
+const initState = initializeTimes(new Date(), 17, 22);
 
 export const useBooking = () => {
-  return useReducer(reducer, initializeTimes());
+  return useReducer(reducer, initState);
 };

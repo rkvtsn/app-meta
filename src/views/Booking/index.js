@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import Image from "../../components/Image";
 import Images from "../../components/Image/Images";
-import { ACTION_CHANGE } from "../../reducers/booking";
+import { ACTION_CHANGE, ACTION_CHANGE_DATE } from "../../reducers/booking";
 import BookingForm from "./BookingForm";
 import "./styles.css";
 
@@ -9,10 +9,10 @@ const Booking = () => {
   const handleSubmit = () => {};
   const [value, dispatch] = useOutletContext();
 
-  const handleOnChange = (payload) => {
+  const handleOnChange = (valueName, value) => {
     dispatch({
-      type: ACTION_CHANGE,
-      payload,
+      type: valueName === "date" ? ACTION_CHANGE_DATE : ACTION_CHANGE,
+      payload: { [valueName]: value },
     });
   };
 

@@ -7,9 +7,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
 
   const handleOnChange = (e) => {
     setIsTouched(true);
-    onChange({
-      [e.target.name]: e.target.value,
-    });
+    onChange(e.target.name, e.target.value);
   };
 
   const formError = useMemo(() => {
@@ -84,7 +82,9 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
       <input
         disabled={formError}
         type="submit"
-        value={formError ? "Make Your reservation" : "Fill the form"}
+        value={
+          formError ? "Fill required fields, please" : "Make Your reservation"
+        }
       />
     </form>
   );
