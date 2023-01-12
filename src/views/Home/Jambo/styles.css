@@ -21,18 +21,15 @@
   border-radius: var(--border-radius);
   display: block;
   position: relative;
-  height: 340px;
+  height: 380px;
   width: 340px;
   object-fit: cover;
   top: var(--offset-margin);
 }
 
 .jambo-content {
-  display: flex;
   justify-content: space-between;
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 0 10px;
+  gap: 25%;
 }
 
 .jambo-content > div {
@@ -41,9 +38,13 @@
 
 .jambo-content__info {
   padding: 25px 0;
-  max-width: 370px;
+  width: auto;
 }
 
 .jambo-content__info h2 {
   margin-bottom: 30px;
+}
+
+.jambo-content__info > button {
+  margin-top: 18px;
 }

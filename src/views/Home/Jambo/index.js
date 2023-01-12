@@ -9,7 +9,7 @@ const Jambo = () => {
 
   return (
     <article className="jambo">
-      <div className="jambo-content">
+      <div className="jambo-content panel-layout rows-layout">
         <div className="jambo-content__info">
           <h1>Little Lemon</h1>
           <h2>Chicago</h2>

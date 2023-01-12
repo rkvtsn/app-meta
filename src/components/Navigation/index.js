@@ -1,4 +1,6 @@
 import { NavLink } from "react-router-dom";
+import Icon from "../Icon";
+import Icons from "../Icon/Icons";
 import "./styles.css";
 
 const activeStyle = {
@@ -10,7 +12,7 @@ const getActiveStyle = ({ isActive }) => (isActive ? activeStyle : undefined);
 const Navigation = () => {
   return (
     <nav className="navigation">
-      <ul>
+      <ul className="rows-layout">
         <li>
           <NavLink role="button" to="/" style={getActiveStyle}>
             Home
@@ -32,15 +34,15 @@ const Navigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink role="button" to="/order-online" style={getActiveStyle}>
+          <NavLink className="nav-link-higllighted" role="button" to="/order-online" style={getActiveStyle}>
             Order online
           </NavLink>
         </li>
 
         <li>
-          <NavLink role="button" to="/login" style={getActiveStyle}>
-            Login
-          </NavLink>
+          <a role="button" href="#/cart">
+            <Icon icon={Icons.Basket} />
+          </a>
         </li>
       </ul>
     </nav>

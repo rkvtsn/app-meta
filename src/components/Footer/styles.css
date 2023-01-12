@@ -1,9 +1,23 @@
-footer {
+footer.footer {
   display: flex;
   text-align: center;
+  margin-top: 100px;
+  padding: 20px 0;
+  border-top: 5px solid var(--secondary-bg-color);
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+footer > * {
+  width: fit-content;
 }
 
 footer .copyright {
-  margin-left: auto;
-  margin-right: 0;
+  font-size: 0.8em;
+}
+
+footer nav ul {
+  font-size: 0.7em;
+  gap: 10px;
 }

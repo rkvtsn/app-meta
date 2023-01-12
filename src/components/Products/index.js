@@ -3,7 +3,7 @@ import "./styles.css";
 
 const Products = ({ data }) => {
   return (
-    <div className="products">
+    <div className="products rows-layout">
       {data.map((item) => (
         <Product
           key={item.id}

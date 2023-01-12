@@ -1,12 +1,9 @@
-.specials {
-  max-width: var(--max-width);
-  margin: auto;
-  padding: 0 10px;
+article.specials {
+  padding: 0;
 }
 
-.specials__title {
-  display: flex;
+.specials .specials__title {
   justify-content: space-between;
-  align-items: center;
   margin: 25px auto;
+  display: flex;
 }

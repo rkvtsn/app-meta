@@ -1,7 +1,7 @@
 import "./styles.css";
 
 const Header = ({ children }) => {
-  return <header>{children}</header>;
+  return <header className="header panel-layout rows-layout">{children}</header>;
 };
 
 export default Header;

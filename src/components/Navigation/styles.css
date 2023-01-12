@@ -1,6 +1,32 @@
 .navigation ul {
-  display: flex;
-  gap: 30px;
+  gap: 28px;
   align-items: center;
   font-weight: bold;
+  font-size: 0.8em;
+  align-items: center;
+}
+
+.navigation a {
+  display: block;
+  text-align: center;
+  padding: 4px 6px;
+}
+
+.navigation .nav-link-higllighted {
+  background-color: var(--primary-bg-color);
+  color: var(--secondary-bg-color);
+  border-radius: var(--border-radius);
+}
+
+@media (max-width: 740px) {
+  .navigation {
+    background: var(--secondary-bg-color);
+  }
+  .navigation a {
+    padding: 2px;
+  }
+  .navigation ul {
+    gap: 10px;
+    flex-direction: row;
+  }
 }

@@ -3,7 +3,7 @@ import "./styles.css";
 
 const Specials = ({ products }) => {
   return (
-    <article className="specials">
+    <article className="specials panel-layout">
       <div className="specials__title">
         <h2>This week specials</h2>
         <button>Online Menu</button>

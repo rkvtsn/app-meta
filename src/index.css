@@ -38,6 +38,7 @@ h2,
 h3 {
   font-family: "Markazi Text", serif;
   line-height: 0.8;
+  font-weight: normal;
 }
 
 h1 {
@@ -45,6 +46,9 @@ h1 {
 }
 h2 {
   font-size: 40pt;
+}
+h3 {
+  font-size: 21pt;
 }
 
 p {
@@ -62,6 +66,7 @@ button {
   cursor: pointer;
   font-weight: bold;
   padding: 12px 22px;
+  font-size: 0.8em;
 }
 
 a {
@@ -78,6 +83,7 @@ body {
   font-family: "Karla", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16pt;
 }
 
 code {
@@ -85,13 +91,34 @@ code {
     monospace;
 }
 
-.card-title {
-  font-size: 18pt;
-  font-weight: bold;
+@media (min-width: 740px) {
+  .rows-layout {
+    display: flex;
+    flex-direction: row;
+  }
 }
-.highlight-text {
-  font-weight: bold;
+
+@media (max-width: 740px) {
+  .rows-layout {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    padding: 0 3px;
+    margin: auto;
+  }
+  .rows-layout > * {
+    width: 100%;
+  }
+
+  body {
+    font-size: 18pt;
+  }
 }
-.borders-round {
-  border-radius: var(--border-radius);
+
+.panel-layout {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: auto;
+  padding: 0;
 }

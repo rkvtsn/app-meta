@@ -1,9 +1,22 @@
 i.icon {
   display: inline-block;
-  vertical-align: middle;
 }
 
 i.icon > img {
+  display: block;
+}
+
+i.icon-size-s > img {
   height: 20px;
   width: 20px;
+}
+
+i.icon-size-m > img {
+  height: 30px;
+  width: 30px;
+}
+
+i.icon-size-l > img {
+  height: 40px;
+  width: 40px;
 }

@@ -5,3 +5,32 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+.product-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-weight: bold;
+}
+
+.product-price {
+    font-weight: bold;
+    color: var(--secondary-light-color);
+}
+
+.product__content {
+    padding: 25px;
+    background-color: var(--secondary-bg-color);
+}
+
+.product__order-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.product-description {
+    margin: 40px 0;
+}
