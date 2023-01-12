@@ -1,3 +1,7 @@
+:root {
+  --backdrop-height: 500px;
+}
+
 .booking {
   display: flex;
   margin: 0 auto;
@@ -10,7 +14,10 @@
 .booking-content {
   position: relative;
   width: 100%;
-  padding-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--backdrop-height);
 }
 
 .booking .backdrop {
@@ -19,5 +26,5 @@
   object-fit: cover;
   width: 100%;
   top: 0;
-  height: 490px;
+  height: var(--backdrop-height);
 }

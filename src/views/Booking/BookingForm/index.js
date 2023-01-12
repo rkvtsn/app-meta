@@ -1,72 +1,91 @@
-import formArray from "../../../utils/formArray";
+import { useMemo, useState } from "react";
+import { getIsErrorForm } from "./getIsErrorForm";
 import "./styles.css";
 
-const timeOptions = formArray(17, 22, (i) => `${i}:00`);
-
 const BookingForm = ({ value, onChange, onSubmit }) => {
+  const [isTouched, setIsTouched] = useState(false);
+
   const handleOnChange = (e) => {
-    onChange((prevValue) => ({
-      ...prevValue,
+    setIsTouched(true);
+    onChange({
       [e.target.name]: e.target.value,
-    }));
+    });
   };
+
+  const formError = useMemo(() => {
+    return getIsErrorForm(value);
+  }, [value]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit();
+    formError && onSubmit();
   };
 
   return (
     <form onSubmit={handleSubmit} className="booking-form">
-      <label htmlFor="res-date">Choose date</label>
+      <div className="form-line form-line--required">
+        <label htmlFor="res-date">Date</label>
+        <input
+          name="date"
+          value={value.date}
+          onChange={handleOnChange}
+          type="date"
+          id="res-date"
+        />
+      </div>
+
+      <div className="form-line form-line--required">
+        <label htmlFor="res-time">Time</label>
+        <select
+          name="time"
+          value={value.time}
+          onChange={handleOnChange}
+          id="res-time"
+        >
+          <option value="">-</option>
+          {value.availableTimes.map((time) => (
+            <option key={time} value={time}>
+              {time}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="form-line form-line--required">
+        <label htmlFor="guests">Number of guests</label>
+        <input
+          name="guests"
+          value={value.guests}
+          onChange={handleOnChange}
+          type="number"
+          placeholder=""
+          min="1"
+          max="10"
+          id="guests"
+        />
+      </div>
+
+      <div className="form-line">
+        <label htmlFor="occasion">Occasion</label>
+        <select
+          name="occasion"
+          value={value.occasion}
+          onChange={handleOnChange}
+          id="occasion"
+        >
+          <option value="0">N/A</option>
+          <option value="birthday">Birthday</option>
+          <option value="anniversary">Anniversary</option>
+        </select>
+      </div>
+
+      <span className="form-error">{isTouched && formError}</span>
+
       <input
-        name="date"
-        value={value.date}
-        onChange={handleOnChange}
-        type="date"
-        id="res-date"
+        disabled={formError}
+        type="submit"
+        value={formError ? "Make Your reservation" : "Fill the form"}
       />
-
-      <label htmlFor="res-time">Choose time</label>
-      <select
-        name="time"
-        value={value.time}
-        onChange={handleOnChange}
-        id="res-time "
-      >
-        <option value="">-</option>
-        {timeOptions.map((time) => (
-          <option key={time} value={time}>
-            {time}
-          </option>
-        ))}
-      </select>
-
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        name="guests"
-        value={value.guests}
-        onChange={handleOnChange}
-        type="number"
-        placeholder="1"
-        min="1"
-        max="10"
-        id="guests"
-      />
-
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        name="occasion"
-        value={value.occasion}
-        onChange={handleOnChange}
-        id="occasion"
-      >
-        <option value="0">N/A</option>
-        <option value="birthday">Birthday</option>
-        <option value="anniversary">Anniversary</option>
-      </select>
-
-      <input type="submit" value="Make Your reservation" />
     </form>
   );
 };

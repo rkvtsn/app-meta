@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import Image from "../../components/Image";
 import Images from "../../components/Image/Images";
+import { ACTION_CHANGE } from "../../reducers/booking";
 import BookingForm from "./BookingForm";
-import { BOOKING_DEFAULT_STATE } from "./constants";
 import "./styles.css";
 
 const Booking = () => {
-  const [state, setState] = useState(BOOKING_DEFAULT_STATE);
+  const handleSubmit = () => {};
+  const [value, dispatch] = useOutletContext();
 
-  const handleSubmit = () => {
-    console.log(state);
+  const handleOnChange = (payload) => {
+    dispatch({
+      type: ACTION_CHANGE,
+      payload,
+    });
   };
 
   return (
@@ -17,8 +21,8 @@ const Booking = () => {
       <h1>Reserve a Table</h1>
       <div className="booking-content">
         <BookingForm
-          value={state}
-          onChange={setState}
+          value={value}
+          onChange={handleOnChange}
           onSubmit={handleSubmit}
         />
         <Image className="backdrop" src={Images.Restaurant} />

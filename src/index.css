@@ -15,7 +15,6 @@
 #root {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 html,
@@ -81,7 +80,11 @@ a:hover {
   color: var(--primary-bg-color);
 }
 
-body {
+body,
+input,
+label,
+input,
+select {
   font-family: "Karla", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -127,10 +130,24 @@ code {
 
 label,
 input,
-select {
+select,
+option {
   font-size: 14pt;
   width: 100%;
   max-width: 500px;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  max-width: 300px;
+}
+
+input, select {
+  border: 1px solid var(--primary-bg-color);
+  padding: 4px;
+}
+
+input:disabled {
+  background-color: var(--secondary-bg-color);
 }
 
 label {
