@@ -16,7 +16,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    formError && onSubmit();
+    !formError && onSubmit();
   };
 
   return (
@@ -71,9 +71,9 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           onChange={handleOnChange}
           id="occasion"
         >
-          <option value="0">N/A</option>
-          <option value="birthday">Birthday</option>
-          <option value="anniversary">Anniversary</option>
+          <option value="">N/A</option>
+          <option value="Birthday">Birthday</option>
+          <option value="Anniversary">Anniversary</option>
         </select>
       </div>
 
@@ -83,7 +83,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         disabled={formError}
         type="submit"
         value={
-          formError ? "Fill required fields, please" : "Make Your reservation"
+          formError ? "Please, fill required fields" : "Make Your reservation"
         }
       />
     </form>

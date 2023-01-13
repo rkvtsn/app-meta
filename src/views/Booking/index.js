@@ -6,8 +6,7 @@ import BookingForm from "./BookingForm";
 import "./styles.css";
 
 const Booking = () => {
-  const handleSubmit = () => {};
-  const [value, dispatch] = useOutletContext();
+  const [value, dispatch, onSubmit] = useOutletContext();
 
   const handleOnChange = (valueName, value) => {
     dispatch({
@@ -23,7 +22,7 @@ const Booking = () => {
         <BookingForm
           value={value}
           onChange={handleOnChange}
-          onSubmit={handleSubmit}
+          onSubmit={onSubmit}
         />
         <Image className="backdrop" src={Images.Restaurant} />
       </div>

@@ -1,9 +1,11 @@
+import { fetchAPI } from "../../api/fetchAPI";
+
 /**
  *
  * @param {string[]} availableTimes
  * @param {string} currentDate
  * @returns {string[]} new availableTimes
  */
-export const updateTimes = (bookingSlots, currentDate) => {
-  return currentDate in bookingSlots ? bookingSlots[currentDate] : [];
+export const updateTimes = (currentDate) => {
+  return fetchAPI(new Date(currentDate));
 };
