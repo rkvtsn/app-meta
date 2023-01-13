@@ -1,31 +1,16 @@
-import { useEffect, useState } from "react";
-import { bookingLoad } from "../../../utils/bookingStorage";
+import BookingDetail from "./BookingDetail";
 import "./styles.css";
 
-const BookingDetails = () => {
-  const [details, setDetails] = useState(null);
+const BookingDetails = ({ details, onRemove }) => {
+  if (!details?.length) {
+    return <h2>No bookings found</h2>;
+  }
 
-  useEffect(() => {
-    setDetails(bookingLoad());
-  }, []);
-
-  if (!details) return null;
   return (
     <div className="booking-details">
-      <ul className="booking-details__content">
-        <li>
-          <span>Date:</span> {details.date}
-        </li>
-        <li>
-          <span>Time:</span> {details.time}
-        </li>
-        <li>
-          <span>Guests:</span> {details.guests}
-        </li>
-        <li>
-          <span>Occasion:</span> {details.occasion}
-        </li>
-      </ul>
+      {details.map((booking) => (
+        <BookingDetail key={booking.id} onRemove={onRemove} {...booking} />
+      ))}
     </div>
   );
 };

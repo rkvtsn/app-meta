@@ -3,12 +3,15 @@ import App from "./App";
 import Routes from "./routes";
 import Booking from "./views/Booking";
 import BookingConfirm from "./views/BookingConfirm";
+import ErrorPage from "./views/ErrorPage";
 import Home from "./views/Home";
+import UnderConstruction from "./views/UnderConstruction";
 
 const router = createBrowserRouter([
   {
     path: Routes.Root,
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
@@ -21,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: Routes.BookingConfirm,
         element: <BookingConfirm />,
+      },
+      {
+        path: Routes.NotImplemented,
+        element: <UnderConstruction />,
       },
     ],
   },

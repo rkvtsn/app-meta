@@ -1,0 +1,31 @@
+.booking-detail {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-detail .hide {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.booking-detail__content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  background-color: var(--primary-bg-color);
+  border-radius: var(--border-radius);
+  color: #fff;
+  padding: 30px;
+}
+
+.booking-detail__content li {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #fff;
+}
+
+.booking-detail__content span {
+  font-weight: bold;
+}

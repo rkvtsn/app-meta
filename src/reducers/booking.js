@@ -1,16 +1,14 @@
 import { useReducer } from "react";
-import { bookingSave } from "../utils/bookingStorage";
 import { initializeTimes } from "./utils/initializeTimes";
 import { updateTimes } from "./utils/updateTimes";
 
-export const ACTION_CHANGE = "change";
-export const ACTION_CHANGE_DATE = "change-date";
-export const ACTION_SAVE = "SAVE";
+export const ACTION_CHANGE = "CHANGE";
+export const ACTION_CHANGE_DATE = "CHANGE_DATE";
+export const ACTION_RESET = "RESET";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ACTION_SAVE:
-      bookingSave(state);
+    case ACTION_RESET:
       return initializeTimes(new Date());
     case ACTION_CHANGE_DATE:
       const availableTimes = updateTimes(action.payload.date);
