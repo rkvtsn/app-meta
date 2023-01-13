@@ -1,0 +1,6 @@
+.error-form-line {
+  font-size: 14pt;
+  padding: 2px;
+  color: #fff;
+  background: var(--primary-bg-color);
+}

@@ -1,26 +1,24 @@
-import { useMemo, useState } from "react";
+import { useCallback } from "react";
+import FormErrorLine from "../../../components/FormErrorLine";
+import useValidateForm from "../../../hooks/useValidationForm";
 import { getErrorForm } from "./getErrorForm";
 import "./styles.css";
 
 const BookingForm = ({ value, onChange, onSubmit }) => {
-  const [isTouched, setIsTouched] = useState(false);
+  const handleChange = useCallback(
+    (e) => onChange(e.target.name, e.target.value),
+    [onChange]
+  );
 
-  const touchTrigger = () => {
-    setIsTouched(true);
-  };
-
-  const handleOnChange = (e) => {
-    touchTrigger();
-    onChange(e.target.name, e.target.value);
-  };
-
-  const formErrors = useMemo(() => {
-    return getErrorForm(value);
-  }, [value]);
+  const { isTouched, formErrors, hasErrors, handlers } = useValidateForm(
+    getErrorForm,
+    value,
+    handleChange
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    !formErrors?.length && onSubmit();
+    !hasErrors && onSubmit();
   };
 
   return (
@@ -30,22 +28,16 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         <input
           name="date"
           value={value.date}
-          onChange={handleOnChange}
           type="date"
           id="res-date"
-          onBlur={touchTrigger}
+          {...handlers}
         />
+        <FormErrorLine isTouched={isTouched} error={formErrors["date"]} />
       </div>
 
       <div className="form-line form-line--required">
         <label htmlFor="res-time">Time</label>
-        <select
-          name="time"
-          value={value.time}
-          onChange={handleOnChange}
-          id="res-time"
-          onBlur={touchTrigger}
-        >
+        <select name="time" value={value.time} id="res-time" {...handlers}>
           <option value="">-</option>
           {value.availableTimes.map((time) => (
             <option key={time} value={time}>
@@ -53,6 +45,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
             </option>
           ))}
         </select>
+        <FormErrorLine isTouched={isTouched} error={formErrors["time"]} />
       </div>
 
       <div className="form-line form-line--required">
@@ -60,15 +53,15 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         <input
           name="guests"
           value={value.guests}
-          onChange={handleOnChange}
           type="number"
           placeholder=""
           required
           min="1"
           max="10"
           id="guests"
-          onBlur={touchTrigger}
+          {...handlers}
         />
+        <FormErrorLine isTouched={isTouched} error={formErrors["guests"]} />
       </div>
 
       <div className="form-line">
@@ -76,9 +69,8 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         <select
           name="occasion"
           value={value.occasion}
-          onChange={handleOnChange}
           id="occasion"
-          onBlur={touchTrigger}
+          {...handlers}
         >
           <option value="">N/A</option>
           <option value="Birthday">Birthday</option>
@@ -86,23 +78,11 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         </select>
       </div>
 
-      <span className="form-error">
-        {isTouched && formErrors.length ? (
-          <ul>
-            {formErrors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-        ) : null}
-      </span>
-
       <input
-        disabled={formErrors.length}
+        disabled={hasErrors}
         type="submit"
         value={
-          formErrors.length
-            ? "Please, fill required fields"
-            : "Make Your reservation"
+          hasErrors ? "Please, fill required fields" : "Make Your reservation"
         }
       />
     </form>
