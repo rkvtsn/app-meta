@@ -26,8 +26,12 @@
   color: var(--secondary-light-color);
 }
 
-.booking-form .form-error {
-  color: var(--secondary-light-color);
+.booking-form .form-error ul {
   font-size: 14pt;
-  text-align: center;
+  list-style: circle;
+  padding: 5px;
+  background-color: var(--secondary-light-color);
+}
+.form-error ul li {
+  padding: 2px;
 }

@@ -1,22 +1,26 @@
 import { useMemo, useState } from "react";
-import { getIsErrorForm } from "./getIsErrorForm";
+import { getErrorForm } from "./getErrorForm";
 import "./styles.css";
 
 const BookingForm = ({ value, onChange, onSubmit }) => {
   const [isTouched, setIsTouched] = useState(false);
 
-  const handleOnChange = (e) => {
+  const touchTrigger = () => {
     setIsTouched(true);
+  };
+
+  const handleOnChange = (e) => {
+    touchTrigger();
     onChange(e.target.name, e.target.value);
   };
 
-  const formError = useMemo(() => {
-    return getIsErrorForm(value);
+  const formErrors = useMemo(() => {
+    return getErrorForm(value);
   }, [value]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    !formError && onSubmit();
+    !formErrors?.length && onSubmit();
   };
 
   return (
@@ -29,6 +33,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           onChange={handleOnChange}
           type="date"
           id="res-date"
+          onBlur={touchTrigger}
         />
       </div>
 
@@ -39,6 +44,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           value={value.time}
           onChange={handleOnChange}
           id="res-time"
+          onBlur={touchTrigger}
         >
           <option value="">-</option>
           {value.availableTimes.map((time) => (
@@ -57,9 +63,11 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           onChange={handleOnChange}
           type="number"
           placeholder=""
+          required
           min="1"
           max="10"
           id="guests"
+          onBlur={touchTrigger}
         />
       </div>
 
@@ -70,6 +78,7 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           value={value.occasion}
           onChange={handleOnChange}
           id="occasion"
+          onBlur={touchTrigger}
         >
           <option value="">N/A</option>
           <option value="Birthday">Birthday</option>
@@ -77,13 +86,23 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
         </select>
       </div>
 
-      <span className="form-error">{isTouched && formError}</span>
+      <span className="form-error">
+        {isTouched && formErrors.length ? (
+          <ul>
+            {formErrors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        ) : null}
+      </span>
 
       <input
-        disabled={formError}
+        disabled={formErrors.length}
         type="submit"
         value={
-          formError ? "Please, fill required fields" : "Make Your reservation"
+          formErrors.length
+            ? "Please, fill required fields"
+            : "Make Your reservation"
         }
       />
     </form>
