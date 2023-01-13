@@ -2,7 +2,7 @@ import { formatDate } from "../../../utils/formatDate";
 
 export const getErrorForm = (value) => {
   const formErrors = {};
-  if (!value) return ["Unexpected error"];
+  if (!value) return null;
   const date = new Date(value.date);
   if (!value.date || isNaN(date.getTime())) {
     formErrors.date = "Incorrect date";

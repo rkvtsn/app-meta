@@ -23,7 +23,7 @@ const Product = ({ name, id, img, price, description }) => {
           onClick={handleOnOrder}
         >
           <span>Order a delivery</span>
-          <Icon size="s" icon={Icons.Delivery} />
+          <Icon aria-label="Order a delivery" size="s" icon={Icons.Delivery} />
         </a>
       </div>
     </div>

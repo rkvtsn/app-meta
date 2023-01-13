@@ -3,7 +3,7 @@ import Routes from "../../routes";
 
 const FooterNavigation = () => {
   return (
-    <nav className="footer-navigation">
+    <nav role="navigation" className="footer-navigation">
       <ul className="rows-layout">
         <li>
           <NavLink role="button" to={Routes.Home}>
@@ -26,7 +26,7 @@ const FooterNavigation = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink role="button" to={Routes.NotImplemented} >
+          <NavLink role="button" to={Routes.NotImplemented}>
             Order online
           </NavLink>
         </li>

@@ -3,7 +3,7 @@ import "./styles.css";
 
 const Logo = (props) => {
   return (
-    <img className="logo" alt="Little Lemon Logo" src={LogoSvg} {...props} />
+    <img aria-label="Little Lemon Log" className="logo" alt="Little Lemon Logo" src={LogoSvg} {...props} />
   );
 };
 

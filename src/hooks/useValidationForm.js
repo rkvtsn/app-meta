@@ -8,7 +8,9 @@ export const useValidateForm = (ruleset, value, setValue) => {
   };
 
   const { formErrors, hasErrors } = useMemo(() => {
-    return ruleset(value);
+    const rules = ruleset(value);
+    if (rules === null) throw Error("Validation value is null");
+    return rules;
   }, [value, ruleset]);
 
   const onChange = (e) => {

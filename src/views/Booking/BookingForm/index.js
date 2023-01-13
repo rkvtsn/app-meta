@@ -30,6 +30,8 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           value={value.date}
           type="date"
           id="res-date"
+          aria-required="true"
+          aria-invalid={!!formErrors["date"]}
           {...handlers}
         />
         <FormErrorLine isTouched={isTouched} error={formErrors["date"]} />
@@ -37,7 +39,14 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
 
       <div className="form-line form-line--required">
         <label htmlFor="res-time">Time</label>
-        <select name="time" value={value.time} id="res-time" {...handlers}>
+        <select
+          name="time"
+          value={value.time}
+          id="res-time"
+          aria-required="true"
+          aria-invalid={!!formErrors["time"]}
+          {...handlers}
+        >
           <option value="">-</option>
           {value.availableTimes.map((time) => (
             <option key={time} value={time}>
@@ -59,6 +68,8 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
           min="1"
           max="10"
           id="guests"
+          aria-required="true"
+          aria-invalid={!!formErrors["guests"]}
           {...handlers}
         />
         <FormErrorLine isTouched={isTouched} error={formErrors["guests"]} />
@@ -80,6 +91,8 @@ const BookingForm = ({ value, onChange, onSubmit }) => {
 
       <input
         disabled={hasErrors}
+        aria-disabled={hasErrors}
+        aria-label="Submit"
         type="submit"
         value={
           hasErrors ? "Please, fill required fields" : "Make Your reservation"
